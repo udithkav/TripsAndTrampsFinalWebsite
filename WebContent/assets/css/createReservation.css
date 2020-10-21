@@ -1,0 +1,19 @@
+label {
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+label {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+body {
+  background-image: linear-gradient(to bottom right, #24478f,#000033);
+}
+
+:root {
+  background-image: linear-gradient(to bottom right, #24478f,#000033);
+}
+
