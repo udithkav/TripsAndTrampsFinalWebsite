@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.TripsAndTramps.Common.DatabaseVariables;
 import com.TripsAndTramps.Common.databaseConnection;
 import com.TripsAndTramps.RoomReservation.Model.Room;
 
 public class ViewRoomTypeService implements ViewRoomTypeInterface {
-
 	@Override
 	public List<Room> getAllRoomTypes() {
 		
 		List<Room> roomTypeList = new ArrayList<Room>();
-		String sql = "SELECT RoomType_ID,RoomType_Name FROM room_type";
-		
+		String sql = "SELECT * FROM "+DatabaseVariables.roomTypeTable;
+		System.out.println(sql);
 		Connection con = databaseConnection.getConnection();
 		
 		try {
@@ -26,10 +26,14 @@ public class ViewRoomTypeService implements ViewRoomTypeInterface {
 			
 			while(rs.next()) {
 				Room ro = new Room();
-				ro.setRoomTypeName(rs.getString(2));
+				ro.setRoomTypeNameDirect(rs.getString(3));
 				ro.setRoomType(rs.getInt(1));
+				ro.setAmountDirect(rs.getDouble(2));
 				roomTypeList.add(ro);
 			}
+			
+			
+			
 			return roomTypeList;
 			
 		} catch (SQLException e) {
@@ -41,6 +45,12 @@ public class ViewRoomTypeService implements ViewRoomTypeInterface {
 		
 		
 		
+	}
+
+	@Override
+	public Room getSpecificRoomData(int roomNumber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,0 +1,16 @@
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.nav-pills .nav-link {
+  color: #555;
+}
+
+.nav-pills .nav-link.active {
+  color: #fff;
+}
+
+.container.py-5 {
+  background-image: linear-gradient(to bottom right, #24478f,#000033);
+}
+

@@ -276,7 +276,7 @@
    <option value="Zaire">Zaire</option>
    <option value="Zambia">Zambia</option>
    <option value="Zimbabwe">Zimbabwe</option></optgroup></select></div>
-                <div class="form-group"><input type="email" class="form-control" name="email" placeholder="Email" /><input type="text" class="form-control" name="firstName" placeholder="First Name" /><input type="text" class="form-control" name="lastName" placeholder="Last Name" /><input class="form-control" type="tel" placeholder="Contact Number" /></div>
+                <div class="form-group"><input type="file" class="form-control" name="profileImage" placeholder="Profile Image" /><input type="email" class="form-control" name="email" placeholder="Email" /><input type="text" class="form-control" name="firstName" placeholder="First Name" /><input type="text" class="form-control" name="lastName" placeholder="Last Name" /><input class="form-control" type="tel" placeholder="Contact Number" /></div>
                 <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a></form>
         </div>

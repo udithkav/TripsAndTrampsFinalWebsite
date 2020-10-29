@@ -12,6 +12,8 @@ public class DatabaseVariables {
 	public static String roomReservationTable_Room_Id = "Room_Id" ;
 	public static String roomReservationTable_Tourist_Id = "Tourist_Id";
 	public static String roomReservationTable_Amount = "Amount";
+	public static String roomReservationTable_Remarks = "remarks";
+	public static String roomReservationTable_Confirmation = "reservation_confirmation";
 	
 	//Tourist Table Column Names
 	public static String touristTable = "tourist_table";
@@ -24,6 +26,23 @@ public class DatabaseVariables {
 	public static String touristTable_password = "password";
 	public static String touristTable_country = "country";
 	public static String touristTable_TouristImage = "Tourist_Image";
+	
+	//Room_Type Table Column Names
+	public static String roomTypeTable = "room_type";
+	public static String roomTypeTable_id = "roomType_Id";
+	public static String roomTypeTable_Amount= "Amount";
+	public static String roomTypeTable_Name = "roomType_Name";
+	public static String roomTypeTable_Description = "description";
+	public static String roomTypeTable_Image = "Image";
+	
+	//Room_Manage Column Names
+	
+	public static String roomManageTable = "room_manage";
+	public static String roomManageTable_RoomID = "RoomID";
+	public static String roomManageTable_P_EID = "P_EID";
+	public static String roomManageTable_roomTypeID = "RoomType_ID";
+	
+	
 	
 	
 	

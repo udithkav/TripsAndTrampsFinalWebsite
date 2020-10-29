@@ -6,6 +6,6 @@ import com.TripsAndTramps.RoomReservation.Model.Room;
 
 public interface ViewRoomTypeInterface {
 	public List<Room> getAllRoomTypes();
-	
+	public Room getSpecificRoomData(int roomNumber);
 	}
 

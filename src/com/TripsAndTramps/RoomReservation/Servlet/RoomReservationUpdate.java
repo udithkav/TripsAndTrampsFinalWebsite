@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.TripsAndTramps.Login.TouristLoggerDetails;
 import com.TripsAndTramps.RoomReservation.Model.Room;
@@ -31,40 +32,40 @@ public class RoomReservationUpdate extends HttpServlet {
 		// TODO Auto-generated method stub
 		int reservationID = Integer.valueOf(request.getParameter("reservationID"));
 		int roomTypeID = Integer.valueOf(request.getParameter("roomType"));
-		int numberOfAdults = Integer.valueOf(request.getParameter("numberOfAdults"));
-		int numberOfChildren = Integer.valueOf(request.getParameter("numberOfChildren"));
-		int totalPeople = numberOfAdults+numberOfChildren;
-		Date checkInDate = Date.valueOf(request.getParameter("checkInDate"));
-		Date checkOutDate = Date.valueOf(request.getParameter("checkOutDate"));
+		int numberOfAdults = Integer.valueOf(request.getParameter("numberOfPeople"));
+		int totalPeople = numberOfAdults;
+		String checkInDate = String.valueOf(request.getParameter("checkInDate"));
+		String checkOutDate = String.valueOf(request.getParameter("checkOutDate"));
 		String remarks = request.getParameter("remarks");
+		HttpSession session = request.getSession();
 		
 		RoomReservationInterface w = new RoomReservationService();
-		
-	w.deleteRoomReservation(reservationID);
+		SelectRoomInterface s = new SelectRoomService();
 	
-	SelectRoomInterface s = new SelectRoomService();
 	
-	List<Room> lds = new ArrayList<Room>();
-	Room r = new Room();
-	lds = s.getRoomAvailable(checkInDate, checkOutDate, roomTypeID);
-	if(lds==null) {
+		Room r = new Room();
+		r = s.getRoomAvailable(checkInDate, checkOutDate, roomTypeID);
+	if(r==null) {
 		PrintWriter out = response.getWriter();  
 		response.setContentType("text/html");  
 		out.println("<script type=\"text/javascript\">");  
-		out.println("alert('Please Enter Different Check In and Check Out Dates');");  
+		out.println("alert('It is not possible to change your Reservation please Contact Customer Support!');");
 		out.println("</script>");
 	}
 	else {
-		r = lds.get(0);
+		w.deleteRoomReservation(reservationID);
 		r.setAmount(r.getRoomType());
+		r.setAmount(r.getRoomType());
+		r.setRoomTypeName(r.getRoomType());
 		
-		
-		RoomReservation reservation = new RoomReservation(r.getRoomNumber(),TouristLoggerDetails.getPassportID(),r.getAmount(),checkInDate,checkOutDate,totalPeople,remarks);
-		
-		
-	
+		String touristIdSession = (String) session.getAttribute("touristID");
+		int tId = Integer.valueOf(touristIdSession);
+		System.out.println(checkInDate+" "+ checkOutDate +" " + totalPeople+" "+ r.getRoomNumber() + " " + tId+ " "+ r.getAmount()+ " " + remarks);
+		RoomReservation reservation = new RoomReservation(checkInDate, checkOutDate, totalPeople, r.getRoomNumber(), tId, r.getAmount(), remarks);
 		
 		w.createRoomReservation(reservation);
+		
+		response.sendRedirect("viewRoomReservations");
 		
 	}
 	

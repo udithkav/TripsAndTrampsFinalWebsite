@@ -1,4 +1,4 @@
-package com.TripsAndTramps.RoomReservation.Servlet;
+package com.TripsAndTramps.Login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ViewRoomTypeServlet
+ * Servlet implementation class EmployeeLoginServlet
  */
-@WebServlet("/ViewRoomTypeServlet")
-public class ViewRoomTypeServlet extends HttpServlet {
+@WebServlet("/EmployeeLoginServlet")
+public class EmployeeLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewRoomTypeServlet() {
+    public EmployeeLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

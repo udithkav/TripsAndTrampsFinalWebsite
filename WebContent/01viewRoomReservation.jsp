@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-
+<%@page
+	import="com.TripsAndTramps.RoomReservation.Model.RoomReservation,java.util.*"%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -15,70 +16,35 @@
 </head>
 
 <body>
-	<nav
-		class="navbar navbar-light navbar-expand-md navigation-clean bg-light sticky-top">
-		<div class="container">
-			<img src="assets/img/trips-and-tramps-196x196.jpg"
-				style="width: 71px; padding-right: 8px;" /><a class="navbar-brand"
-				href="#">Ceylon Trips and Tramps</a>
-			<button data-toggle="collapse" data-target="#navcol-1"
-				class="navbar-toggler">
-				<span class="sr-only">Toggle navigation</span><span
-					class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navcol-1">
-				<ul class="nav navbar-nav ml-auto">
-					<li role="presentation" class="nav-item"><a class="nav-link"
-						href="#">Home</a></li>
-					<li role="presentation" class="nav-item"><a class="nav-link"
-						href="#">Gallery</a></li>
-					<li role="presentation" class="nav-item"></li>
-					<li class="nav-item dropdown"><a data-toggle="dropdown"
-						aria-expanded="false" class="dropdown-toggle nav-link" href="#">Reservation</a>
-						<div role="menu" class="dropdown-menu">
-							<a role="presentation" class="dropdown-item active"
-								href="reserveRoom.jsp">Reserve a Room</a><a role="presentation"
-								class="dropdown-item" href="#">Reserve a Vehicle</a><a
-								role="presentation" class="dropdown-item" href="#">Reserve a
-								Tour Guide</a>
-						</div></li>
-					<li class="nav-item dropdown"><a data-toggle="dropdown"
-						aria-expanded="false" class="dropdown-toggle nav-link" href="#">Contact
-							Us</a>
-						<div role="menu" class="dropdown-menu">
-							<a role="presentation" class="dropdown-item" href="04">Complaint</a><a
-								role="presentation" class="dropdown-item" href="#">Feedback</a><a
-								role="presentation" class="dropdown-item" href="#">General
-								Inquiry</a>
-						</div></li>
-					<li class="nav-item dropdown"><a data-toggle="dropdown"
-						aria-expanded="false" class="dropdown-toggle nav-link" href="#">Profile</a>
-						<div role="menu" class="dropdown-menu">
-							<a role="presentation" class="dropdown-item" href="#">View
-								Profile</a><a role="presentation" class="dropdown-item"
-								href="<%=request.getContextPath()%>/viewRoomReservationServlet">View
-								Room Reservations</a><a role="presentation" class="dropdown-item"
-								href="#">View Vehicle Reservations</a><a role="presentation"
-								class="dropdown-item" href="#">View Tour Guide Reservations</a><a
-								role="presentation" class="dropdown-item" href="#">Log Out</a>
-						</div></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<jsp:include page="touristNavigationBar.jsp" />
+
+	<%
+		@SuppressWarnings("unchecked")
+	List<RoomReservation> rrList = (List<RoomReservation>) request.getAttribute("roomReservationList");
+	System.out.println(rrList);
+	RoomReservation rrSolo = (RoomReservation) request.getAttribute("roomReservationInfo");
+	%>
 	<div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-xl-4">
-					<h1 style="font-size: 16px; margin-top: 20px;">
-						<strong>View Room Reservation</strong>
-					</h1>
-					<form>
+					<br>
+					<strong>Search Room Reservation</strong>
+					<form action="SearchRoomReservationServlet" method="get">
+						
+						<br>
+						<label><strong>From : </strong></label>
 						<input class="form-control" type="date" style="width: 100%;"
 							name="searchDate" />
-						<button class="btn btn-primary btn-success" type="button"
-							style="width: 100%;" name="btnSearchDate">Search</button>
+						<label><strong>To : </strong></label>
+						<input class="form-control" type="date" style="width: 100%;"
+							name="searchDate2" />
+						<button class="btn btn-primary btn-success" type="submit"
+							style="width: 100%;" name="btnSearchDate" >Search</button>
 					</form>
+					<a class="btn btn-info" role="button" style="width: 100%;"
+								href="<%=request.getContextPath()%>/viewRoomReservations">Reset Search</a>
+					<br>
 					<div>
 						<a class="btn btn-primary bg-info" data-toggle="collapse"
 							aria-expanded="false" aria-controls="collapse-1"
@@ -86,44 +52,78 @@
 							style="margin-top: 20px; width: 100%;">Click Here to View
 							Reservations</a>
 						<div class="collapse" id="collapse-1">
+							<%
+								for (RoomReservation r : rrList) {
+							%>
+							<div class="card-body" >
+								<h4 class="card-title">
+									Reservation ID:<%=r.getRoomReservationID()%>
+								</h4>
+								<h6 class="text-muted card-subtitle mb-2">
+									Check In : <%=r.getCheckInDate()%>
+								</h6>
+								<h6 class="text-muted card-subtitle mb-2">
+									Check Out : <%=r.getCheckOutDate()%>
+								</h6>
+								<h6 class="text-muted card-subtitle mb-2">Payment : <%=r.getConfirm() %></h6>
 
-							<div class="card-body">
-								<h4 class="card-title">Title</h4>
-								<h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-								<p class="card-text">Nullam id dolor id nibh ultricies
-									vehicula ut id elit. Cras justo odio, dapibus ac facilisis in,
-									egestas eget quam. Donec id elit non mi porta gravida at eget
-									metus.</p>
-								<a class="card-link" href="#">Link</a><a class="card-link"
-									href="#">Link</a>
+								<form action="DeleteRoomReservation" method="get">
+									<input type="hidden" value="<%=r.getRoomReservationID()%>"
+										name="roomReservationID">
+									<button class="btn btn-danger" style="float: right;"
+										type="submit">Delete Reservation</button>
+								</form>
+								<form action="viewSpecificRoomReservation" method="get">
+									<input type="hidden" value="<%=r.getRoomReservationID()%>"
+										name="roomReservationIDu">
+									<button class="btn btn-primary" type="submit">View
+										Reservation</button>
+								</form>
+								<form action="RoomReservationReportGeneratorServlet" method="post">
+									<input type="hidden" value="<%=r.getRoomReservationID()%>"name="roomReservationIDRep">
+									<input type="hidden" value="<%=r.getAmount()%>"name="AmountRep">
+									<input type="hidden" value="<%=r.getPeople()%>"name="PeopleRep">
+									<input type="hidden" value="<%=r.getConfirm()%>"name="ConfirmRep">
+									<input type="hidden" value="<%=r.getTouristID()%>"name="TouristIDRep">
+									<input type="hidden" value="<%=r.getCheckInDate()%>"name="checkInDateRep">
+									<input type="hidden" value="<%=r.getCheckOutDate()%>"name="checkOutDateRep">
+									<input type="hidden" value="<%=r.getRemarks()%>"name="remarksRep">
+									<button class="btn btn-secondary" type="submit" style="width: 100%;">Generate Reservation Report</button>
+								</form>
 							</div>
+							
+							<%} %>
 
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-xl-8">
-					<form style="margin-top: 15px;" action = "RoomReservationUpdate" method="post">
-					<label><strong>Reservation ID </strong></label><input name="reservationID" class="form-control" style="margin-top: 15px; width: 100%;"></input>
-						<label><strong>Room Type</strong></label><select
-							class="form-control" style="margin-top: 15px; width: 100%;"
-							name="roomType"><optgroup label="Select a Room Type"></optgroup></select><label
+				<h1 style="font-size: 16px; margin-top: 20px;">
+						<strong>View Room Reservation</strong>
+					</h1>
+				<%if(rrSolo!=null){ %>
+					<form style="margin-top: 15px;" action="RoomReservationUpdate"
+						method="post">
+						<label><strong>Reservation ID </strong></label><input
+							name="reservationID" class="form-control"
+							style="margin-top: 15px; width: 100%;"
+							value="<%=rrSolo.getRoomReservationID()%>"></input> <input class="form-control"
+							style="margin-top: 15px; width: 100%;" name="roomType"  value="<%=rrSolo.getRoomTypeId()%>" type="hidden"></input><label
 							style="margin-top: 15px;"><strong>Number of
-								Adults</strong></label><input type="number" class="form-control"
-							style="width: 100%; margin-top: 15px;" name="numberOfAdults" /><label
-							style="margin-top: 15px;"><strong>Number of
-								Children</strong></label><input type="number" class="form-control"
-							style="width: 100%; margin-top: 15px;" name="numberOfChildren"
-							name="checkInDate" /> <label style="margin-top: 15px;"><strong>Check-in
+								People</strong></label><input type="number" class="form-control"
+							style="width: 100%; margin-top: 15px;" name="numberOfPeople" value="<%=rrSolo.getPeople()%>" />
+						<label style="margin-top: 15px;"><strong>Check-in
 								Date</strong></label><input class="form-control" type="date"
-							style="margin-top: 15px;"><label
+							style="margin-top: 15px;" value="<%=rrSolo.getCheckInDate()%>" name="checkInDate"><label
 							style="margin-top: 15px;"><strong>Check-out Date</strong></label><input
 							class="form-control" type="date" style="margin-top: 15px;"
-							name="checkOutDate" /><label style="margin-top: 15px;"><strong>Remarks</strong></label>
-						<textarea class="form-control" name="remarks"></textarea>
+							name="checkOutDate" value="<%=rrSolo.getCheckOutDate()%>"/><label style="margin-top: 15px;"><strong>Remarks</strong></label>
+						<input class="form-control" name="remarks" value="<%=rrSolo.getRemarks()%>"></input>
 						<button class="btn btn-primary btn-success" type="submit"
 							style="margin-top: 15px; float: right;"
 							name="updateReservationBtn">Update Reservation</button>
 					</form>
+					<%} %>
 				</div>
 			</div>
 		</div>
