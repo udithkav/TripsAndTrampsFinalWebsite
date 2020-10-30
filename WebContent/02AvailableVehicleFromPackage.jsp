@@ -18,25 +18,7 @@
 </head>
 
 <body style="background-image: linear-gradient(to bottom right, #24478f,#000033);height: 100%;width: 100%;"><nav class="navbar navbar-light navbar-expand-md navigation-clean bg-light sticky-top">
-    <div class="container"><img src="VehicleReservation/img/icon.jpg" style="width:71px; height:63px; padding-right:8px;"/><a class="navbar-brand" href="#">Ceylon Trips and Tramps</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div
-            class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li role="presentation" class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li role="presentation" class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
-                <li role="presentation" class="nav-item"></li>
-                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Reservation</a>
-                    <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">Reserve a Room</a><a role="presentation" class="dropdown-item" href="<%=request.getContextPath()%>/ToVehicleReservationPageServlet">Reserve a Vehicle</a><a role="presentation" class="dropdown-item" href="#">Reserve a Tour Guide</a></div>
-                </li>
-                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Contact Us</a>
-                    <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">Complaint</a><a role="presentation" class="dropdown-item" href="#">Feedback</a><a role="presentation" class="dropdown-item" href="#">General Inquiry</a></div>
-                </li>
-                <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Profile</a>
-                    <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">View Profile</a><a role="presentation" class="dropdown-item active" href="#">View Room Reservations</a><a role="presentation" class="dropdown-item" href="<%=request.getContextPath()%>/DisplayVehicleReservationsFromNavigation">View Vehicle Reservations</a><a role="presentation" class="dropdown-item" href="#">View Tour Guide Reservations</a><a role="presentation" class="dropdown-item" href="#">Log Out</a></div>
-                </li>
-            </ul>
-    </div>
-    </div>
+    <jsp:include page="touristNavigationBar.jsp" />
 </nav>
     <h3 class="Header" style="padding: 7px;color: rgb(80,167,255);margin-top: 10px;">Available Vehicles</h3>
     <div class="table-responsive" style="max-width: 75%;position: absolute;left: 13%;top: 175px;">

@@ -21,7 +21,7 @@
 						<div role="menu" class="dropdown-menu">
 							<a role="presentation" class="dropdown-item active"
 								href="01reserveRoom.jsp">Reserve a Room</a><a role="presentation"
-								class="dropdown-item" href="#">Reserve a Vehicle</a><a
+								class="dropdown-item" href="<%=request.getContextPath()%>/ToVehicleReservationPageServlet">Reserve a Vehicle</a><a
 								role="presentation" class="dropdown-item" href="#">Reserve a
 								Tour Guide</a>
 								<a
@@ -43,7 +43,7 @@
 								Profile</a><a role="presentation" class="dropdown-item"
 								href="<%=request.getContextPath()%>/viewRoomReservations">View
 								Room Reservations</a><a role="presentation" class="dropdown-item"
-								href="#">View Vehicle Reservations</a><a role="presentation"
+								href="<%=request.getContextPath()%>/DisplayVehicleReservationsFromNavigation">View Vehicle Reservations</a><a role="presentation"
 								class="dropdown-item" href="#">View Tour Guide Reservations</a><a
 								role="presentation" class="dropdown-item" href="#">Log Out</a>
 						</div></li>

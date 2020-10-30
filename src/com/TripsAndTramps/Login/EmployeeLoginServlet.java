@@ -30,7 +30,8 @@ public class EmployeeLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String employeeType = null;
+		
+		
 		
 		try(Connection conn = databaseConnection.getConnection()){
 			

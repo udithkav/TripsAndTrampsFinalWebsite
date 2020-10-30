@@ -9,7 +9,7 @@ public class databaseConnection {
 	public static Connection getConnection() {
 		String databaseURL ="jdbc:mysql://localhost:3306/tripsandtramps";
 		String username ="root";
-		String password ="MALIndu123#";
+		String password ="";
 		Connection con = null;
 		try {
 			/*Loading the Driver*/	
