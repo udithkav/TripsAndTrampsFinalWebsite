@@ -50,7 +50,7 @@ List <Room> roomDropdownData = s1.getAllRoomTypes();
 					<form method="post" action="PaymentServlet">
 						<label><strong>Room Type</strong></label> <select
 							class="form-control" style="margin-top: 15px; width: 100%;"
-							name="roomType" onchange = "updateRoomDetails();" id="roomTypeSelect">
+							name="roomType" onchange = "RoomReservationServletFinal" id="roomTypeSelect">
 							<optgroup label="Select Desired Room Type">
 							<%for(Room r:roomDropdownData){ %>
 							
