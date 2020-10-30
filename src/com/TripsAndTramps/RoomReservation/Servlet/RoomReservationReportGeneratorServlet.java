@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,7 +76,8 @@ public class RoomReservationReportGeneratorServlet extends HttpServlet {
 					touristID, amount, Remarks,confirm, roomTypeValue, aboutRoom,
 					roomManagerFirstName, roomManagerLastName, roomManagerEmail);
 			request.setAttribute("reportObject", r1);
-			request.getRequestDispatcher("RoomReservationReport.jsp").forward(request, response);
+			RequestDispatcher RD = request.getRequestDispatcher("RoomReservationReport.jsp");
+			RD.forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

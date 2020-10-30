@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="com.TripsAndTramps.RoomReservation.Model.RoomReservationReport,com.itextpdf.text.Document,com.itextpdf.text.pdf.PdfWriter,com.itextpdf.text.Paragraph,com.itextpdf.text.Element" %>   
-
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,41 +61,19 @@
 		p6.setAlignment(Element.ALIGN_LEFT);
 		document.add(p6);	
 		
-		p7.add("Check In Date: " + rrSolo.getCheckInDate());
+		p7.add("Tourist ID: " + rrSolo.getTouristID());
 		p7.setAlignment(Element.ALIGN_LEFT);
 		document.add(p7);	
 		
-		p8.add("Check In Date: " + rrSolo.getCheckInDate());
+		p8.add("Amount: " + rrSolo.getAmount());
 		p8.setAlignment(Element.ALIGN_LEFT);
 		document.add(p8);	
 		
-		p9.add("Check In Date: " + rrSolo.getCheckInDate());
+		p9.add("Payment Confirmation: " + rrSolo.getConfirm());
 		p9.setAlignment(Element.ALIGN_LEFT);
 		document.add(p9);	
 		
-		p10.add("Check In Date: " + rrSolo.getCheckInDate());
-		p10.setAlignment(Element.ALIGN_LEFT);
-		document.add(p10);	
 		
-		p11.add("Check In Date: " + rrSolo.getCheckInDate());
-		p11.setAlignment(Element.ALIGN_LEFT);
-		document.add(p11);	
-		
-		p12.add("Check In Date: " + rrSolo.getCheckInDate());
-		p12.setAlignment(Element.ALIGN_LEFT);
-		document.add(p12);	
-		
-		p13.add("Check In Date: " + rrSolo.getCheckInDate());
-		p13.setAlignment(Element.ALIGN_LEFT);
-		document.add(p13);	
-		
-		p14.add("Check In Date: " + rrSolo.getCheckInDate());
-		p14.setAlignment(Element.ALIGN_LEFT);
-		document.add(p14);	
-		
-		p15.add("Check In Date: " + rrSolo.getCheckInDate());
-		p15.setAlignment(Element.ALIGN_LEFT);
-		document.add(p15);
 		
 		document.close();
 		
