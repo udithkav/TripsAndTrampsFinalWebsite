@@ -12,7 +12,7 @@
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav ml-auto">
 					<li role="presentation" class="nav-item"><a class="nav-link"
-						href="#">Home</a></li>
+						href="01touristHomepage.jsp">Home</a></li>
 					<li role="presentation" class="nav-item"><a class="nav-link"
 						href="#">Gallery</a></li>
 					<li role="presentation" class="nav-item"></li>

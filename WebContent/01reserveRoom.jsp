@@ -47,7 +47,7 @@ List <Room> roomDropdownData = s1.getAllRoomTypes();
 			<div class="row">
 				<div class="col-md-6 col-xl-3"
 					style="padding-top: 20px; margin-top: 0px;">
-					<form method="post" action="PaymentServlet">
+					<form method="post" action="RoomReservationServletFinal">
 						<label><strong>Room Type</strong></label> <select
 							class="form-control" style="margin-top: 15px; width: 100%;"
 							name="roomType" onchange = "updateRoomDetails();" id="roomTypeSelect">

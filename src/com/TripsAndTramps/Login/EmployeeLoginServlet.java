@@ -31,8 +31,14 @@ public class EmployeeLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String employeeType = null;
+		boolean check = false;
 		
 		try(Connection conn = databaseConnection.getConnection()){
+			check = LoginEmployee.validateLogin(email, password);
+			
+			if(check!=false) {
+				
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

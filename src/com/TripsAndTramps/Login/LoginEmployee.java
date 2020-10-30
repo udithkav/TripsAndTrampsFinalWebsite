@@ -8,7 +8,7 @@ import com.TripsAndTramps.Common.DatabaseVariables;
 import com.TripsAndTramps.Common.databaseConnection;
 
 public class LoginEmployee {
-	public boolean validateLogin(String email, String password) {
+	public static boolean validateLogin(String email, String password) {
 		
 		Connection conn = databaseConnection.getConnection();
 		
